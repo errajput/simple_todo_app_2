@@ -34,9 +34,6 @@ A simple and clean **Todo List App** built using **React**, **Tailwind CSS**, an
 
 ## Future Improvements
 
-- Implement actual update functionality for editing todos.
-- Add filters: All, Active, Completed.
 - Add light/dark theme toggle.
-- Add animations for better UX.
 
 ---
