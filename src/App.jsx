@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  CheckIcon,
-  PlusIcon,
-  TrashIcon,
-  PencilIcon,
-} from "@heroicons/react/20/solid";
+import { PlusIcon, TrashIcon, PencilIcon } from "@heroicons/react/20/solid";
+import CustomCheckbox from "./components/CustomCheckbox";
+import CustomCheckbox2 from "./components/CustomCheckbox2";
 
 function App() {
   const [todo, setTodo] = useState([]);
@@ -79,24 +76,15 @@ function App() {
             className="flex items-center justify-between bg-white shadow-md p-3 mb-3 rounded-md"
           >
             <div className="flex gap-4">
-              <label className="relative cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={v.isDone}
-                  onChange={() => {
-                    const updatedTodos = todo.map((item) =>
-                      item.id === v.id
-                        ? { ...item, isDone: !item.isDone }
-                        : item
-                    );
-                    saveTodo(updatedTodos);
-                  }}
-                  className="peer hidden"
-                />
-                <div className="h-6 w-6 rounded-full border-2 border-gray-400 flex items-center justify-center transition-all duration-200 peer-checked:bg-blue-500 peer-checked:border-blue-500 ">
-                  <CheckIcon className="h-4 w-4 text-white" />
-                </div>
-              </label>
+              <CustomCheckbox2
+                checked={v.isDone}
+                onChange={() => {
+                  const updatedTodos = todo.map((item) =>
+                    item.id === v.id ? { ...item, isDone: !item.isDone } : item
+                  );
+                  saveTodo(updatedTodos);
+                }}
+              />
 
               <p className={`${v.isDone ? "line-through text-gray-500" : ""}`}>
                 {v.title}
