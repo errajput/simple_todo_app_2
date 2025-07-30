@@ -1,8 +1,8 @@
 {
   "name": "website",
   "private": true,
-  "homepage": "https://errajput.github.io/simple_todo_app_2",
   "version": "0.0.0",
+  "homepage": "https://errajput.github.io/simple_todo_app_2",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
