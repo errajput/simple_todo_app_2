@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { CheckIcon } from "@heroicons/react/20/solid";
+import {
+  CheckIcon,
+  PlusIcon,
+  TrashIcon,
+  PencilIcon,
+} from "@heroicons/react/20/solid";
 
 function App() {
   const [todo, setTodo] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  // const [editingId, setEditingId] = useState("");
 
   useEffect(() => {
     setTodo(JSON.parse(localStorage.getItem("todo") || "[]"));
@@ -23,11 +29,16 @@ function App() {
     }
   };
 
+  const handleEdit = (id) => {
+    const itemToEdit = todo.find((v) => v.id === id);
+    setInputValue(itemToEdit.title);
+    // setEditingId(id);
+  };
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
       <h1 className="text-3xl font-bold text-blue-600 mb-6">Todo App</h1>
 
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex  items-center gap-2 mb-4">
         <input
           type="text"
           className="border px-3 py-1 rounded-md outline-none focus:ring-2 ring-blue-400"
@@ -43,22 +54,22 @@ function App() {
         />
 
         <button
-          className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600 transition"
+          className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600 transition cursor-pointer"
           onClick={() => {
             addTodo();
           }}
         >
-          Add
+          <PlusIcon className="h-5 w-5" />
         </button>
       </div>
-      <div className="w-full max-w-md justify-between">
+      <div className="w-full max-w-md">
         {todo.map((v) => {
           return (
             <div
               key={v.id}
               className="flex items-center justify-between bg-white shadow-md p-3 mb-3 rounded-md"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex gap-4">
                 <label className="relative cursor-pointer">
                   <input
                     type="checkbox"
@@ -86,9 +97,18 @@ function App() {
                 >
                   {v.title}
                 </p>
+              </div>
+
+              <div className="flex gap-5">
+                <button
+                  onClick={() => handleEdit(v.id)}
+                  className="bg-yellow-500 text-white hover:bg-yellow-600 px-2 py-0.5 rounded-md transition cursor-pointer"
+                >
+                  <PencilIcon className="h-5 w-5" />
+                </button>
 
                 <button
-                  className="bg-red-500 text-white hover:text-red-700 px-2 py-0.5 rounded-md transition"
+                  className="bg-red-500 text-white hover:text-red-700 px-2 py-0.5 rounded-md transition cursor-pointer"
                   onClick={() => {
                     const newTodo = todo.filter((v2) => {
                       if (!(v.id === v2.id)) {
@@ -100,7 +120,7 @@ function App() {
                     localStorage.setItem("todo", JSON.stringify([...newTodo]));
                   }}
                 >
-                  delete
+                  <TrashIcon className="h-5 w-5" />
                 </button>
               </div>
             </div>
