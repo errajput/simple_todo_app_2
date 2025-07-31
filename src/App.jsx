@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { PlusIcon, TrashIcon, PencilIcon } from "@heroicons/react/20/solid";
 import CustomCheckbox from "./components/CustomCheckbox";
 import CustomCheckbox2 from "./components/CustomCheckbox2";
+import CustomEdit from "./components/CustomEdit";
 
 function App() {
   const [todo, setTodo] = useState([]);
@@ -46,12 +47,14 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
-      <h1 className="text-3xl font-bold text-blue-500 mb-6">Todo App</h1>
+      <h1 className=" no-underline md:underline text-3xl font-bold text-blue-500 mb-6">
+        Todo App
+      </h1>
 
       <div className="flex items-center gap-2 mb-4">
         <input
           type="text"
-          className="border px-3 py-1 rounded-md  outline-blue-500 focus:ring-2 ring-blue-400"
+          className="border border-blue-400 px-3 py-1 rounded-md outline-none focus:ring-1 ring-blue-400"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => {
@@ -62,7 +65,7 @@ function App() {
         />
 
         <button
-          className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600 transition cursor-pointer"
+          className="bg-blue-500 h-8.5 text-white px-4 py-1 rounded-md hover:bg-blue-600  transition cursor-pointer"
           onClick={addOrUpdateTodo}
         >
           <PlusIcon className="h-5 w-5" />
@@ -92,15 +95,10 @@ function App() {
             </div>
 
             <div className="flex gap-5">
-              <button
-                onClick={() => handleEdit(v.id)}
-                className="bg-yellow-500 text-white hover:bg-yellow-600 px-2 py-0.5 rounded-md transition cursor-pointer"
-              >
-                <PencilIcon className="h-5 w-5" />
-              </button>
+              <CustomEdit onClick={() => handleEdit(v.id)} />
 
               <button
-                className="bg-red-500 text-white hover:bg-red-700 px-2 py-0.5 rounded-md transition cursor-pointer"
+                className="bg-red-500 text-white hover:bg-red-700 px-2 py-2 rounded-md transition cursor-pointer"
                 onClick={() => {
                   const updatedTodos = todo.filter((item) => item.id !== v.id);
                   saveTodo(updatedTodos);
