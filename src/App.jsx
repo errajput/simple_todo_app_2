@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PlusIcon, TrashIcon, PencilIcon } from "@heroicons/react/20/solid";
-import CustomCheckbox from "./components/CustomCheckbox";
+// import CustomCheckbox from "./components/CustomCheckbox";
 import CustomCheckbox2 from "./components/CustomCheckbox2";
 import CustomEdit from "./components/CustomEdit";
 import DeleteButton from "./components/DeleteButton";
