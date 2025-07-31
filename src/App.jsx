@@ -88,41 +88,53 @@ function App() {
       </div>
 
       <div className="w-full max-w-md">
-        {sortedTodos.map((v) => (
-          <div
-            key={v.id}
-            className="flex items-center justify-between bg-white shadow-md p-3 mb-3 rounded-md"
-          >
-            <div className="flex gap-4">
-              <CustomCheckbox2
-                checked={v.isDone}
-                onChange={() => {
-                  const updatedTodos = todo.map((item) =>
-                    item.id === v.id ? { ...item, isDone: !item.isDone } : item
-                  );
-                  saveTodo(updatedTodos);
-                }}
-              />
-              <div className=" relative group">
-                <p
-                  className={` ${v.isDone ? "line-through text-gray-500" : ""}`}
-                >
-                  {v.title}
-                </p>
-                {v.isDone && (
-                  <div className="absolute left-0 bottom-full mb-2 w-max bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-10">
-                    This task is completed
-                  </div>
-                )}
+        {/* || sortedTodos.every((item) => item.isDone) */}
+        {sortedTodos.length === 0 ? (
+          <div className="text-center text-gray-500 py-10 bg-white shadow-md rounded-md">
+            <p className="text-lg font-medium">No tasks found</p>
+            <p className="text-sm mt-1">Start by adding a new task above.</p>
+          </div>
+        ) : (
+          sortedTodos.map((v) => (
+            <div
+              key={v.id}
+              className="flex items-center justify-between bg-white shadow-md p-3 mb-3 rounded-md"
+            >
+              <div className="flex gap-4">
+                <CustomCheckbox2
+                  checked={v.isDone}
+                  onChange={() => {
+                    const updatedTodos = todo.map((item) =>
+                      item.id === v.id
+                        ? { ...item, isDone: !item.isDone }
+                        : item
+                    );
+                    saveTodo(updatedTodos);
+                  }}
+                />
+                <div className=" relative group">
+                  <p
+                    className={` ${
+                      v.isDone ? "line-through text-gray-500" : ""
+                    }`}
+                  >
+                    {v.title}
+                  </p>
+                  {v.isDone && (
+                    <div className="absolute left-0 bottom-full mb-2 w-max bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-10">
+                      This task is completed
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex gap-5">
+                {!v.isDone && <CustomEdit onClick={() => handleEdit(v.id)} />}
+                <DeleteButton onClick={() => handleDelete(v.id)} />
               </div>
             </div>
-
-            <div className="flex gap-5">
-              {!v.isDone && <CustomEdit onClick={() => handleEdit(v.id)} />}
-              <DeleteButton onClick={() => handleDelete(v.id)} />
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
