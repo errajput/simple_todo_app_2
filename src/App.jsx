@@ -55,6 +55,11 @@ function App() {
     }
   };
 
+  const sortedTodos = [...todo].sort((a, b) => {
+    if (a.isDone === b.isDone) return 0;
+    return a.isDone ? 1 : -1;
+  });
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
       <h1 className=" no-underline md:underline text-3xl font-bold text-blue-500 mb-6">
@@ -83,7 +88,7 @@ function App() {
       </div>
 
       <div className="w-full max-w-md">
-        {todo.map((v) => (
+        {sortedTodos.map((v) => (
           <div
             key={v.id}
             className="flex items-center justify-between bg-white shadow-md p-3 mb-3 rounded-md"
