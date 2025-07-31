@@ -46,6 +46,14 @@ function App() {
     setEditingId(id);
   };
 
+  const handleDelete = (id) => {
+    const confirmDelete = confirm("Are you sure you want to delete this todo?");
+    if (confirmDelete) {
+      const updatedTodos = todo.filter((item) => item.id !== id);
+      saveTodo(updatedTodos);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
       <h1 className=" no-underline md:underline text-3xl font-bold text-blue-500 mb-6">
@@ -89,21 +97,24 @@ function App() {
                   saveTodo(updatedTodos);
                 }}
               />
-
-              <p className={`${v.isDone ? "line-through text-gray-500" : ""}`}>
-                {v.title}
-              </p>
+              <div className=" relative group">
+                <p
+                  className={` ${v.isDone ? "line-through text-gray-500" : ""}`}
+                  // title={v.isDone ? "This task is completed" : ""}
+                >
+                  {v.title}
+                </p>
+                {v.isDone && (
+                  <div className="absolute left-0 bottom-full mb-2 w-max bg-gray-800 text-white text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-10">
+                    This task is completed
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="flex gap-5">
-              <CustomEdit onClick={() => handleEdit(v.id)} />
-
-              <DeleteButton
-                onClick={() => {
-                  const updatedTodos = todo.filter((item) => item.id !== v.id);
-                  saveTodo(updatedTodos);
-                }}
-              />
+              {!v.isDone && <CustomEdit onClick={() => handleEdit(v.id)} />}
+              <DeleteButton onClick={() => handleDelete(v.id)} />
             </div>
           </div>
         ))}
