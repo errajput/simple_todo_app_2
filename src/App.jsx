@@ -3,6 +3,7 @@ import { PlusIcon, TrashIcon, PencilIcon } from "@heroicons/react/20/solid";
 import CustomCheckbox from "./components/CustomCheckbox";
 import CustomCheckbox2 from "./components/CustomCheckbox2";
 import CustomEdit from "./components/CustomEdit";
+import DeleteButton from "./components/DeleteButton";
 
 function App() {
   const [todo, setTodo] = useState([]);
@@ -97,15 +98,12 @@ function App() {
             <div className="flex gap-5">
               <CustomEdit onClick={() => handleEdit(v.id)} />
 
-              <button
-                className="bg-red-500 text-white hover:bg-red-700 px-2 py-2 rounded-md transition cursor-pointer"
+              <DeleteButton
                 onClick={() => {
                   const updatedTodos = todo.filter((item) => item.id !== v.id);
                   saveTodo(updatedTodos);
                 }}
-              >
-                <TrashIcon className="h-5 w-5" />
-              </button>
+              />
             </div>
           </div>
         ))}
