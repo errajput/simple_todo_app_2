@@ -34,7 +34,8 @@ function App() {
         title: inputValue,
         isDone: false,
       };
-      saveTodo([...todo, newTodo]);
+
+      saveTodo([newTodo, ...todo]);
     }
 
     setInputValue("");
@@ -100,7 +101,6 @@ function App() {
               <div className=" relative group">
                 <p
                   className={` ${v.isDone ? "line-through text-gray-500" : ""}`}
-                  // title={v.isDone ? "This task is completed" : ""}
                 >
                   {v.title}
                 </p>
