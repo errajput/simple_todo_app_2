@@ -26,6 +26,9 @@ A simple and clean **Todo List App** built using **React**, **Tailwind CSS**, an
 - Tooltip for completed tasks
 - Beautiful UI using TailwindCSS
 - Icon support using Heroicons
+- Responsive Layout
+- Styled Components
+- Accessible Input
 
 ## Tech Stack
 

@@ -15,18 +15,18 @@ function App() {
   }, []);
 
   const saveTodo = (updatedTodos) => {
-    setTodo(updatedTodos);
-    localStorage.setItem("todo", JSON.stringify(updatedTodos));
+    setTodo(updatedTodos); //Update the State
+    localStorage.setItem("todo", JSON.stringify(updatedTodos)); //Local storage
   };
 
   const addOrUpdateTodo = () => {
-    if (inputValue.trim() === "") return;
+    if (inputValue.trim() === "") return; // checks if Input is empty then prevent blank tasks
 
     if (editingId) {
       const updatedTodos = todo.map((item) =>
         item.id === editingId ? { ...item, title: inputValue } : item
       );
-      saveTodo(updatedTodos);
+      saveTodo(updatedTodos); //Update State and Local Storage
       setEditingId(null);
     } else {
       const newTodo = {
@@ -35,10 +35,10 @@ function App() {
         isDone: false,
       };
 
-      saveTodo([newTodo, ...todo]);
+      saveTodo([newTodo, ...todo]); //Add new Todos on Top
     }
 
-    setInputValue("");
+    setInputValue(""); //For clear Input
   };
 
   const handleEdit = (id) => {
@@ -71,7 +71,7 @@ function App() {
           type="text"
           className="border border-blue-400 px-3 py-1 rounded-md outline-none focus:ring-1 ring-blue-400"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => setInputValue(e.target.value)} //updates state
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               addOrUpdateTodo();
