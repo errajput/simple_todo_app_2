@@ -19,9 +19,11 @@ A simple and clean **Todo List App** built using **React**, **Tailwind CSS**, an
 
 - Add new todos
 - Edit existing todos
-- Delete todos
+- Delete todos with confirmation
 - Mark/unmark todos as complete
 - Todos are saved in browser's localStorage
+- Sorted Tasks
+- Tooltip for completed tasks
 - Beautiful UI using TailwindCSS
 - Icon support using Heroicons
 
@@ -31,9 +33,5 @@ A simple and clean **Todo List App** built using **React**, **Tailwind CSS**, an
 - **Tailwind CSS** – Utility-first CSS framework
 - **Heroicons** – Icon set by Tailwind Labs
 - **LocalStorage** – For client-side persistence
-
-## Future Improvements
-
-- Add light/dark theme toggle.
 
 ---
