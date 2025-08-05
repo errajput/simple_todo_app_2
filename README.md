@@ -1,27 +1,10 @@
-# React Todo App
+# Todo App
 
-A simple and clean **Todo List App** built using **React**, **Tailwind CSS**, and **Heroicons**. It allows users to add, mark as complete, edit, and delete todos with data persistence using **LocalStorage**.
-
-## Features
-
-- Add new todos
-- Edit existing todos
-- Delete todos with confirmation
-- Mark/unmark todos as complete
-- Todos are saved in browser's localStorage
-- Sorted Tasks
-- Tooltip for completed tasks
-- Beautiful UI using TailwindCSS
-- Icon support using Heroicons
-- Responsive Layout
-- Styled Components
-- Accessible Input
-
-## Tech Stack
-
-- **React** – Functional components and hooks
-- **Tailwind CSS** – Utility-first CSS framework
-- **Heroicons** – Icon set by Tailwind Labs
-- **LocalStorage** – For client-side persistence
-
----
+1. Add new Todos
+2. checkBox isDone or Not
+3. Delete Button with confirmation
+4. Edit todos
+5. todos are saved in browser's storage
+6. sorted tasks
+7. Drag and Drop
+8. Separate completed and not completed tasks
