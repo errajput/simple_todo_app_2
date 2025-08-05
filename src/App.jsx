@@ -9,6 +9,7 @@ function App() {
   const [todo, setTodo] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [draggingId, setDraggingId] = useState(null);
 
   useEffect(() => {
     setTodo(JSON.parse(localStorage.getItem("todo") || "[]"));
@@ -63,7 +64,6 @@ function App() {
   // Drag Code
   // 1. Make the Element Draggable
   // 2. Get the Element which we are dragging
-  const [draggingId, setDraggingId] = useState(null);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
